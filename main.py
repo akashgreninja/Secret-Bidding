@@ -11,41 +11,46 @@ from art import logo
 
 
 print(logo)
-bid_1 = {}
-end_of_game=False
-while end_of_game==False:
-    name=input("your name\n")
-    price=int(input("price\n"))
+#revised secret auction without bugs
 
 
-    name_1=""
 
-    def bid(name,price):
-        bid_1[name]=price
+dict={}
+def char_1():
+    end_of_game = False
+    while end_of_game==False:
+        name=input("what is your name")
+        bid = int(input("what is the bid: $"))
+        dict[name]=bid
+        choice=input("are there any bidders yes or no?").lower()
+        if choice =="yes":
+            char_1()
 
-    bid(name,price)
 
-    c=input("are there more ppl?yes or no\n")
-
-
-    print ("\n" * 100)
-    # print(bid_1)
+            end_of_game=False
 
 
-    if c =="no":
-        end_of_game=True
-        highest_bid=0
+        if choice =="no":
+            end_of_game=True
+            variable = 0
+            winner=""
+            for n in dict:
+                higgest_bidder = dict[n]
+                # print(higgest_bidder)
+                if higgest_bidder > variable:
+                    variable=higgest_bidder
+                    winner=n
+            print(f"{winner} is the highest with {higgest_bidder}")
 
-        for zeta in bid_1:
-            bid_amount = bid_1[name]
-            if bid_amount>highest_bid:
-                highest_bid+=bid_amount
-                winner=zeta
-        print(f"{zeta} with a bid of {highest_bid} is the winner")
-        # print(bid_1)
-        # a= max(bid_1, key=bid_1.get)
-        # print(a)
 
+
+
+
+
+
+
+
+char_1()
 
 
 
